@@ -30,6 +30,7 @@ func NewBadgerDB(dbName, dir string) (*BadgerDB, error) {
 	}
 
 	opts := badger.DefaultOptions(path)
+	              .WithValueLogFileSize(100000000000)
 	opts.Logger = nil // badger is too chatty by default
 
 	return NewBadgerDBWithOptions(opts)
