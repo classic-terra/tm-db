@@ -6,6 +6,7 @@ package db
 import (
 	"bytes"
 	"fmt"
+	"math"
 	"os"
 	"path/filepath"
 
@@ -29,8 +30,9 @@ func NewBadgerDB(dbName, dir string) (*BadgerDB, error) {
 		return nil, err
 	}
 	opts := badger.DefaultOptions(path)
-	opts.SyncWrites = false // note that we have Sync methods
-	opts.Logger = nil       // badger is too chatty by default
+	opts = opts.WithValueThreshold(math.MaxInt64) // set value threshhold to MaxInt64
+	opts.SyncWrites = false                       // note that we have Sync methods
+	opts.Logger = nil                             // badger is too chatty by default
 	return NewBadgerDBWithOptions(opts)
 }
 
