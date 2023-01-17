@@ -6,7 +6,6 @@ package db
 import (
 	"bytes"
 	"fmt"
-	"math"
 	"os"
 	"path/filepath"
 
