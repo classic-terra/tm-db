@@ -30,9 +30,9 @@ func NewBadgerDB(dbName, dir string) (*BadgerDB, error) {
 		return nil, err
 	}
 	opts := badger.DefaultOptions(path)
-	opts = opts.WithValueLogFileSize(math.MaxInt64) // set ValueLogFileSize to MaxInt64
-	opts.SyncWrites = false                         // note that we have Sync methods
-	opts.Logger = nil                               // badger is too chatty by default
+	//opts = opts.WithValueLogFileSize(math.MaxInt64) // set ValueLogFileSize to MaxInt64
+	opts.SyncWrites = false // note that we have Sync methods
+	opts.Logger = nil       // badger is too chatty by default
 	return NewBadgerDBWithOptions(opts)
 }
 
