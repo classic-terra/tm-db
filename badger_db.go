@@ -31,8 +31,8 @@ func NewBadgerDB(dbName, dir string) (*BadgerDB, error) {
 	}
 
 	opts := badger.DefaultOptions(path)
-
 	opts.Logger = nil // badger is too chatty by default
+
 	return NewBadgerDBWithOptions(opts)
 }
 
